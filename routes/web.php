@@ -12,6 +12,14 @@
 */
 
 /**
+* Main homepage
+*/
+Route::get('/', function () {
+    return view('home');
+})->name('home.index');
+
+
+/**
 * Student resource
 */
 # Index page to show all students
@@ -68,29 +76,29 @@ Route::delete('/tutors/{id}', 'TutorController@destroy')->name('tutors.destroy')
 /**
 * Subject resource
 */
-# Index page to show all subjets
-Route::get('/subjets', 'SubjectController@index')->name('subjets.index');
+# Index page to show all subjects
+Route::get('/subjects', 'SubjectController@index')->name('subjects.index');
 
-# Show form to create a new subjets
-Route::get('/subjets/create', 'SubjectController@create')->name('subjets.create');
+# Show form to create a new subjects
+Route::get('/subjects/create', 'SubjectController@create')->name('subjects.create');
 
-# Process the form to create a new subjets
-Route::post('/subjets', 'SubjectController@store')->name('subjets.store');
+# Process the form to create a new subjects
+Route::post('/subjects', 'SubjectController@store')->name('subjects.store');
 
-# Show an individual subjets
-Route::get('/subjets/{title}', 'SubjectController@show')->name('subjets.show');
+# Show an individual subjects
+Route::get('/subjects/{title}', 'SubjectController@show')->name('subjects.show');
 
-# Show form to edit a subjets
-Route::get('/subjets/{id}/edit', 'SubjectController@edit')->name('subjets.edit');
+# Show form to edit a subjects
+Route::get('/subjects/{id}/edit', 'SubjectController@edit')->name('subjects.edit');
 
-# Process form to edit a subjets
-Route::put('/subjets/{id}', 'SubjectController@update')->name('subjets.update');
+# Process form to edit a subjects
+Route::put('/subjects/{id}', 'SubjectController@update')->name('subjects.update');
 
-# Get route to confirm deletion of subjets
-Route::get('/subjets/{id}/delete', 'SubjectController@delete')->name('subjets.destroy');
+# Get route to confirm deletion of subjects
+Route::get('/subjects/{id}/delete', 'SubjectController@delete')->name('subjects.destroy');
 
-# Delete route to actually destroy the subjets
-Route::delete('/subjets/{id}', 'SubjectController@destroy')->name('subjets.destroy');
+# Delete route to actually destroy the subjects
+Route::delete('/subjects/{id}', 'SubjectController@destroy')->name('subjects.destroy');
 
 /**
 * Session resource
