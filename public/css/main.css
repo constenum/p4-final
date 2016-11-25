@@ -1,0 +1,14 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin: 100px 0;
+}
+
+.footer {
+    height: 60px;
+    margin: 0;
+    padding: 20px 0;
+}
