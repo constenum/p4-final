@@ -64,3 +64,30 @@ Route::get('/tutors/{id}/delete', 'TutorController@delete')->name('tutors.destro
 
 # Delete route to actually destroy the tutors
 Route::delete('/tutors/{id}', 'TutorController@destroy')->name('tutors.destroy');
+
+/**
+* Session resource
+*/
+# Index page to show all sessions
+Route::get('/sessions', 'SessionController@index')->name('sessions.index');
+
+# Show form to create a new sessions
+Route::get('/sessions/create', 'SessionController@create')->name('sessions.create');
+
+# Process the form to create a new sessions
+Route::post('/sessions', 'SessionController@store')->name('sessions.store');
+
+# Show an individual sessions
+Route::get('/sessions/{title}', 'SessionController@show')->name('sessions.show');
+
+# Show form to edit a sessions
+Route::get('/sessions/{id}/edit', 'SessionController@edit')->name('sessions.edit');
+
+# Process form to edit a sessions
+Route::put('/sessions/{id}', 'SessionController@update')->name('sessions.update');
+
+# Get route to confirm deletion of sessions
+Route::get('/sessions/{id}/delete', 'SessionController@delete')->name('sessions.destroy');
+
+# Delete route to actually destroy the sessions
+Route::delete('/sessions/{id}', 'SessionController@destroy')->name('sessions.destroy');
