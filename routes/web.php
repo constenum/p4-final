@@ -66,6 +66,33 @@ Route::get('/tutors/{id}/delete', 'TutorController@delete')->name('tutors.destro
 Route::delete('/tutors/{id}', 'TutorController@destroy')->name('tutors.destroy');
 
 /**
+* Subject resource
+*/
+# Index page to show all subjets
+Route::get('/subjets', 'SubjectController@index')->name('subjets.index');
+
+# Show form to create a new subjets
+Route::get('/subjets/create', 'SubjectController@create')->name('subjets.create');
+
+# Process the form to create a new subjets
+Route::post('/subjets', 'SubjectController@store')->name('subjets.store');
+
+# Show an individual subjets
+Route::get('/subjets/{title}', 'SubjectController@show')->name('subjets.show');
+
+# Show form to edit a subjets
+Route::get('/subjets/{id}/edit', 'SubjectController@edit')->name('subjets.edit');
+
+# Process form to edit a subjets
+Route::put('/subjets/{id}', 'SubjectController@update')->name('subjets.update');
+
+# Get route to confirm deletion of subjets
+Route::get('/subjets/{id}/delete', 'SubjectController@delete')->name('subjets.destroy');
+
+# Delete route to actually destroy the subjets
+Route::delete('/subjets/{id}', 'SubjectController@destroy')->name('subjets.destroy');
+
+/**
 * Session resource
 */
 # Index page to show all sessions
