@@ -126,3 +126,8 @@ Route::get('/sessions/{id}/delete', 'SessionController@delete')->name('sessions.
 
 # Delete route to actually destroy the sessions
 Route::delete('/sessions/{id}', 'SessionController@destroy')->name('sessions.destroy');
+
+/**
+* Log viewer
+*/
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
