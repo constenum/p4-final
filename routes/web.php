@@ -11,13 +11,6 @@
 |
 */
 
-/**
-* Main homepage
-*/
-Route::get('/', function () {
-    return view('home');
-})->name('home.index');
-
 
 /**
 * Student resource
@@ -131,3 +124,14 @@ Route::delete('/sessions/{id}', 'SessionController@destroy')->name('sessions.des
 * Log viewer
 */
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+/**
+* Authorizaiton resource
+*/
+Auth::routes();
+
+/**
+* Homepage
+*/
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index')->middleware('auth');

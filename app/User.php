@@ -4,9 +4,21 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
+    /* Relationship Method */
+
+    /**
+    * Each user has many sessions
+    */
+    public function sessions() {
+        return $this->hasMany('App\Session');
+    }
+
+    /* End Relationship Method */
+
     use Notifiable;
 
     /**
