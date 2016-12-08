@@ -11,6 +11,7 @@ class StudentsTableSeeder extends Seeder
      */
     public function run()
     {
+        # Use ModelFactory to generate seed data
         factory(App\Student::class, 20)->create();
     }
 }

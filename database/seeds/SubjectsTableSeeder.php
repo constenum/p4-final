@@ -12,6 +12,7 @@ class SubjectsTableSeeder extends Seeder
      */
     public function run()
     {
+        # Use ModelFactory to generate seed data
         factory(App\Subject::class, 5)->create();
     }
 }
