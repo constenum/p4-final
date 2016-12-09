@@ -14,7 +14,7 @@ class ConnectSessionsStudents extends Migration
     public function up()
     {
         Schema::table('sessions', function (Blueprint $table) {
-            $table->integer('student_id')->references('id')->unsigned();
+            $table->integer('student_id')->unsigned();
 
             # foreign key
             $table->foreign('student_id')->references('id')->on('students');
