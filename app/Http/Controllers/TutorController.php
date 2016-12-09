@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class TutorController extends Controller
 {
@@ -13,7 +14,8 @@ class TutorController extends Controller
      */
     public function index()
     {
-        //
+        $tutors = User::all();
+        return view('tutor.index')->with(['tutors' => $tutors]);
     }
 
     /**
