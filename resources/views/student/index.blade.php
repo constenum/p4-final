@@ -6,7 +6,7 @@
         @if(sizeof($students) == 0)
             <h3>There are no students in the system. Please contact tech support if you believe this is incorrect.</h3>
         @else
-            <h1 class="text-center">Students</h1>
+            <h1 class="text-center table-name">Students</h1>
 
             <table class="table table-striped table-hover">
                 <thead>

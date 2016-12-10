@@ -6,7 +6,9 @@
         @if(sizeof($subjects) == 0)
             <h3>There are no subjects in the system. Please contact tech support if you believe this is incorrect.</h3>
         @else
-            <h1 class="text-center">Subjects</h1>
+            <header>
+                <h1 class="text-center table-name">Subjects</h1>
+            </header>
 
             <table class="table table-striped table-hover">
                 <thead>
