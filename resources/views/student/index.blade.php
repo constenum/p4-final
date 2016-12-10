@@ -8,7 +8,7 @@
         @else
             <h1 class="text-center table-name">Students</h1>
 
-            <a class="button btn btn-default" href="/student/create">
+            <a class="button btn btn-default" href="/students/create">
                 <i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Student</a>
 
             <table class="table table-striped table-hover">
@@ -30,11 +30,11 @@
                             <td>{{ $student->last_name}}</td>
                             <td>{{ $student->card_number }}</td>
                             <td>
-                                <a class="button btn btn-default" href="/student/{{ $student->id }}/edit">
+                                <a class="button btn btn-default" href="/students/{{ $student->id }}/edit">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                             </td>
                             <td>
-                                <a class="button btn btn-default" href="/student/{{ $student->id }}/delete">
+                                <a class="button btn btn-default" href="/students/{{ $student->id }}/delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
                             </td>
                         </tr>
@@ -43,4 +43,5 @@
             </table>
         @endif
     </div>
+
 @endsection

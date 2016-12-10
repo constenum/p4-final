@@ -25,7 +25,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('subject.create');
     }
 
     /**
@@ -58,7 +58,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subject = Subject::find($id);
+
+        return view('subject.edit')->with(['subject' => $subject]);
     }
 
     /**
@@ -71,6 +73,19 @@ class SubjectController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id) {
+
+        $subject = Subject::find($id);
+
+        return view('subject.delete')->with('subject', $subject);
     }
 
     /**

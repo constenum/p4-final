@@ -86,7 +86,7 @@
                 </div>
             </div>
         </nav>
-
+        
         @yield('content')
 
         <!-- Fixed Footer -->

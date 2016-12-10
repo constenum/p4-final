@@ -25,7 +25,7 @@ class TutorController extends Controller
      */
     public function create()
     {
-        //
+        return view('tutor.create');
     }
 
     /**
@@ -58,7 +58,9 @@ class TutorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tutor = User::find($id);
+
+        return view('tutor.edit')->with(['tutor' => $tutor]);
     }
 
     /**
@@ -71,6 +73,19 @@ class TutorController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id) {
+
+        $tutor = User::find($id);
+
+        return view('tutor.delete')->with('tutor', $tutor);
     }
 
     /**

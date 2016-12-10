@@ -25,7 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student.create');
     }
 
     /**
@@ -58,7 +58,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+
+        return view('student.edit')->with(['student' => $student]);
     }
 
     /**
@@ -71,6 +73,19 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id) {
+
+        $student = Student::find($id);
+
+        return view('student.delete')->with('student', $student);
     }
 
     /**
