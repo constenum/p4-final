@@ -25,11 +25,11 @@
                             <td>{{ $tutor->name }}</td>
                             <td>{{ $tutor->email }}</td>
                             <td>
-                                <a class="button btn btn-default" href="/tutor/{{ $tutor->id }}/edit">
+                                <a class="button btn btn-default" href="/users/{{ $tutor->id }}/edit">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                             </td>
                             <td>
-                                <a class="button btn btn-default" href="/tutor/{{ $tutor->id }}/delete">
+                                <a class="button btn btn-default" href="/users/{{ $tutor->id }}/delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
                             </td>
                         </tr>

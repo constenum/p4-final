@@ -31,11 +31,11 @@
                             <td>{{ $session->updated_at }}</td>
                             <td>{{ $session->user->name }}</td>
                             <td>
-                                <a class="button btn btn-default" href="/tutor/{{ $session->id }}/edit">
+                                <a class="button btn btn-default" href="/sessions/{{ $session->id }}/edit">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                             </td>
                             <td>
-                                <a class="button btn btn-default" href="/tutor/{{ $session->id }}/delete">
+                                <a class="button btn btn-default" href="/sessions/{{ $session->id }}/delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
                             </td>
                         </tr>
