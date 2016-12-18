@@ -17,6 +17,7 @@
                         <th>Session Start</th>
                         <th>Session end</th>
                         <th>Tutor Name</th>
+                        <th>Session Ended</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -30,6 +31,7 @@
                             <td>{{ $session->created_at }}</td>
                             <td>{{ $session->updated_at }}</td>
                             <td>{{ $session->user->name }}</td>
+                            <td>{{ $session->session_ended }}</td>
                             <td>
                                 <a class="button btn btn-default" href="/session/{{ $session->id }}/edit">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
