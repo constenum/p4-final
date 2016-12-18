@@ -3,26 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
-    /**
-     * Show the application dashboard.
+     * Show the tutor's open tutoring sessions.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+
+        if($user) {
+            $sessions = $user->sessions()->orderBy('id', 'ASC')->get();
+        }
+        else {
+            $sessions = [];
+        }
+        return view('home')->with([
+            'sessions' => $sessions
+        ]);
     }
 }
