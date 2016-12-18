@@ -17,7 +17,7 @@ class HomeController extends Controller
         $user = Auth::user();
 
         if($user) {
-            $sessions = $user->sessions()->orderBy('id', 'ASC')->get();
+            $sessions = $user->sessions()->whereNull('session_ended')->orderBy('id', 'ASC')->get();
         }
         else {
             $sessions = [];
