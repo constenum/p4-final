@@ -69,6 +69,8 @@ class SessionController extends Controller
         $session->user_id = Auth::id();
         $session->save();
 
+        \Session::flash('flash_message', 'The tutoring session has been created successfully!');
+
         return redirect('/');
     }
 
