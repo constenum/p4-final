@@ -14,16 +14,17 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Subject ID</th>
+                        <th class="col-md-3"></th>
                         <th>Subject</th>
                         <th></th>
                         <th></th>
+                        <th class="col-md-2"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($subjects as $subject)
                         <tr>
-                            <td>{{ $subject->id }}</td>
+                            <td></td>
                             <td>{{ $subject->subject }}</td>
                             <td>
                                 <a class="button btn btn-default" href="/subjects/{{ $subject->id }}/edit">
@@ -33,6 +34,7 @@
                                 <a class="button btn btn-default" href="/subjects/{{ $subject->id }}/delete">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
                             </td>
+                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>
