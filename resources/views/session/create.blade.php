@@ -30,9 +30,9 @@
                             <div class="col-md-6">
                                 <input id="card_number" type="number" class="form-control" name="card_number" value="{{ old('card_number') }}">
 
-                                @if ($errors->has('student_number'))
+                                @if ($errors->has('card_number'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('student_number') }}</strong>
+                                        <strong>{{ $errors->first('card_number') }}</strong>
                                     </span>
                                 @endif
                             </div>

@@ -123,7 +123,7 @@ Route::delete('/sessions/{id}', 'SessionController@destroy')->name('sessions.des
 /**
 * Log viewer
 */
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth');
 
 /**
 * Authorizaiton resource
@@ -131,7 +131,8 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Auth::routes();
 
 /**
-* Homepage
+* HomeController routes
 */
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/home/{id}', 'HomeController@update')->middleware('auth');

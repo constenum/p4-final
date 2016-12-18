@@ -15,7 +15,7 @@
                         <th>Student Name</th>
                         <th>Subject</th>
                         <th>Session Start</th>
-                        <th>Session end</th>
+                        <th>Session Updated</th>
                         <th>Tutor Name</th>
                         <th>Session Ended</th>
                         <th></th>
@@ -31,7 +31,11 @@
                             <td>{{ $session->created_at }}</td>
                             <td>{{ $session->updated_at }}</td>
                             <td>{{ $session->user->name }}</td>
-                            <td>{{ $session->session_ended }}</td>
+                            @if ($session->session_ended)
+                                <td class="text-center">yes</td>
+                            @else
+                                <td></td>
+                            @endif
                             <td>
                                 <a class="button btn btn-default" href="/session/{{ $session->id }}/edit">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>

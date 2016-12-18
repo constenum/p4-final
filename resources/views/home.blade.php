@@ -30,7 +30,7 @@
                         <td>{{ $session->subject->subject }}</td>
                         <td>{{ $session->created_at }}</td>
                         <td>
-                            <a class="button btn btn-default" href="/session/{{ $session->id }}/delete">
+                            <a class="button btn btn-default" href="/home/{{ $session->id }}">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i> End Session</a>
                         </td>
                     </tr>
