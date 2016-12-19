@@ -39,8 +39,8 @@ class StudentController extends Controller
         # Validate
         $this->validate($request, [
             'student_number' => 'required|unique:students,student_number|integer|between:2017001,2023999',
-            'first_name' => 'required|alpha',
-            'last_name' => 'required|alpha',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'card_number' => 'required|unique:students,card_number|integer|between:1617001,1617999',
         ]);
 
