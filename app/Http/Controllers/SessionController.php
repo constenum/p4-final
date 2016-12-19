@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Session;
 use App\Student;
 use App\Subject;
+use App\User;
 use Auth;
 
 class SessionController extends Controller
@@ -29,9 +30,11 @@ class SessionController extends Controller
     public function create()
     {
         $subjects_for_dropdown = Subject::getSubjectDropdown();
+        $tutors_for_dropdown = User::getTutorDropdown();
 
         return view('session.create')->with([
-            'subjects_for_dropdown' => $subjects_for_dropdown
+            'subjects_for_dropdown' => $subjects_for_dropdown,
+            'tutors_for_dropdown' => $tutors_for_dropdown
         ]);
     }
 
@@ -45,33 +48,25 @@ class SessionController extends Controller
     {
         # Validate
         $this->validate($request, [
-            'student_number' => 'required_without:card_number|exists:students,student_number',
-            'card_number' => 'required_without:student_number|exists:students,card_number',
+            'student_number' => 'required|exists:students,student_number',
         ]);
 
         # Form Data
-        $student_number = $request->input('student_number', 0);
-        $card_number = $request->input('card)number', 0);
-        $tutor_id = Auth::id();
+        $student_id = Student::where('student_number', '=', $request->input('student_number'))->first();
         $subject_id = $request->input('subject_id');
-
-        if ($student_number != 0) {
-            $student_id = Student::where('student_number', '=', $student_number)->first();
-        }
-        else {
-            $student_id = Student::where('card_number', '=', $card_number)->first();
-        }
+        $tutor_id = $request->input('tutor_id');
 
         # Insert New Session Record
         $session = new Session();
         $session->subject_id = $request->input('subject_id');
         $session->student_id = $student_id->id;
-        $session->user_id = Auth::id();
+        $session->user_id = $request->input('tutor_id');
+        $session->session_ended = true;
         $session->save();
 
         \Session::flash('flash_message', 'The tutoring session has been created successfully!');
 
-        return redirect('/');
+        return redirect('/sessions');
     }
 
     /**
@@ -93,7 +88,16 @@ class SessionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $session = Session::find($id);
+
+        $subjects_for_dropdown = Subject::getSubjectDropdown();
+        $tutors_for_dropdown = User::getTutorDropdown();
+
+        return view('session.edit')->with([
+            'session' => $session,
+            'subjects_for_dropdown' => $subjects_for_dropdown,
+            'tutors_for_dropdown' => $tutors_for_dropdown
+        ]);
     }
 
     /**
@@ -105,7 +109,43 @@ class SessionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        # Validate
+        $this->validate($request, [
+            'student_number' => 'required|exists:students,student_number',
+        ]);
+
+        # Form Data
+        $student_id = Student::where('student_number', '=', $request->input('student_number'))->first();
+        $subject_id = $request->input('subject_id');
+        $tutor_id = $request->input('tutor_id');
+
+        # Insert New Session Record
+        $session = Session::find($request->id);
+        $session->subject_id = $request->input('subject_id');
+        $session->student_id = $student_id->id;
+        $session->user_id = $request->input('tutor_id');
+        $session->save();
+
+        \Session::flash('flash_message', 'The tutoring session has been updated successfully!');
+
+        return redirect('/sessions');
+    }
+
+    /**
+    * Page to confirm deletion
+	*/
+    public function delete($id) {
+
+        $session = Session::find($id);
+
+        $subjects_for_dropdown = Subject::getSubjectDropdown();
+        $tutors_for_dropdown = User::getTutorDropdown();
+
+        return view('session.delete')->with([
+            'session' => $session,
+            'subjects_for_dropdown' => $subjects_for_dropdown,
+            'tutors_for_dropdown' => $tutors_for_dropdown
+        ]);
     }
 
     /**
@@ -116,6 +156,11 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $session = Session::find($id);
+        $session->delete();
+
+        \Session::flash('flash_message', 'The tutoring session has been deleted successfully!');
+
+        return redirect('/sessions');
     }
 }

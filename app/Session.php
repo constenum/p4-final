@@ -3,9 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Session extends Model
 {
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
     /* Relationship Methods */
 
     /**
@@ -31,5 +39,5 @@ class Session extends Model
 
     /* End Relationship Method */
 
-
+    use SoftDeletes;
 }

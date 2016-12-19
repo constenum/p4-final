@@ -38,4 +38,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+	* Create dropdown to show tutors.
+	*/
+    public static function getTutorDropdown() {
+
+        $tutors = User::orderBy('name', 'ASC')->get();
+
+        $tutors_for_dropdown = [];
+        foreach($tutors as $tutor) {
+            $tutors_for_dropdown[$tutor->id] = $tutor->name;
+        }
+
+        return $tutors_for_dropdown;
+    }
 }

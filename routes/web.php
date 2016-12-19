@@ -25,7 +25,7 @@ Route::get('/students/create', 'StudentController@create')->name('students.creat
 Route::post('/students', 'StudentController@store')->name('students.store')->middleware('auth');
 
 # Show an individual student
-Route::get('/students/{title}', 'StudentController@show')->name('students.show')->middleware('auth');
+Route::get('/students/{id}', 'StudentController@show')->name('students.show')->middleware('auth');
 
 # Show form to edit a student
 Route::get('/students/{id}/edit', 'StudentController@edit')->name('students.edit')->middleware('auth');
@@ -52,7 +52,7 @@ Route::get('/tutors/create', 'TutorController@create')->name('tutors.create')->m
 Route::post('/tutors', 'TutorController@store')->name('tutors.store')->middleware('auth');
 
 # Show an individual tutor
-Route::get('/tutors/{title}', 'TutorController@show')->name('tutors.show')->middleware('auth');
+Route::get('/tutors/{id}', 'TutorController@show')->name('tutors.show')->middleware('auth');
 
 # Show form to edit a tutor
 Route::get('/tutors/{id}/edit', 'TutorController@edit')->name('tutors.edit')->middleware('auth');
@@ -79,7 +79,7 @@ Route::get('/subjects/create', 'SubjectController@create')->name('subjects.creat
 Route::post('/subjects', 'SubjectController@store')->name('subjects.store')->middleware('auth');
 
 # Show an individual subject
-Route::get('/subjects/{title}', 'SubjectController@show')->name('subjects.show')->middleware('auth');
+Route::get('/subjects/{id}', 'SubjectController@show')->name('subjects.show')->middleware('auth');
 
 # Show form to edit a subject
 Route::get('/subjects/{id}/edit', 'SubjectController@edit')->name('subjects.edit')->middleware('auth');
@@ -106,7 +106,7 @@ Route::get('/sessions/create', 'SessionController@create')->name('sessions.creat
 Route::post('/sessions', 'SessionController@store')->name('sessions.store')->middleware('auth');
 
 # Show an individual session
-Route::get('/sessions/{title}', 'SessionController@show')->name('sessions.show')->middleware('auth');
+Route::get('/sessions/{id}', 'SessionController@show')->name('sessions.show')->middleware('auth');
 
 # Show form to edit a session
 Route::get('/sessions/{id}/edit', 'SessionController@edit')->name('sessions.edit')->middleware('auth');

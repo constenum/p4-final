@@ -5,16 +5,19 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Manually Enter a Tutoring Session</div>
+                <div class="panel-heading">Delete Tutoring Session</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="/sessions">
+                    <form class="form-horizontal" role="form" method="POST" action="/sessions/{{ $session->id }}">
+                        {{ method_field('DELETE') }}
                         {{ csrf_field() }}
+
+                        <input name='session_id' value='{{$session->id}}' type='hidden'>
 
                         <div class="form-group{{ $errors->has('student_number') ? ' has-error' : '' }}">
                             <label for="student_number" class="col-md-4 control-label">Student Number</label>
 
                             <div class="col-md-6">
-                                <input id="student_number" type="number" class="form-control" name="student_number" value="{{ old('student_number') }}" autofocus>
+                                <input id="student_number" type="number" class="form-control" name="student_number" value="{{ old('student_id', $session->student->student_number) }}" disabled>
 
                                 @if ($errors->has('student_number'))
                                     <span class="help-block">
@@ -28,7 +31,7 @@
                             <label for="subject" class="col-md-4 control-label">Subject</label>
 
                             <div class="col-md-6">
-                                <select name="subject_id" class="form-control">
+                                <select name="subject_id" class="form-control" disabled>
                                     @foreach($subjects_for_dropdown as $subject_id => $subject)
                                         <option
                                         value='{{ $subject_id }}'
@@ -42,7 +45,7 @@
                             <label for="tutor_id" class="col-md-4 control-label">Tutor</label>
 
                             <div class="col-md-6">
-                                <select name="tutor_id" class="form-control">
+                                <select name="tutor_id" class="form-control" disabled>
                                     @foreach($tutors_for_dropdown as $user_id => $name)
                                         <option
                                         {{ ($user_id == Auth::id()) ? 'selected' : '' }}
@@ -56,10 +59,7 @@
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Start Session
-                                </button>
-                                <button type="reset" class="btn btn-danger">
-                                    Reset
+                                    Confirm Delete Session
                                 </button>
                             </div>
                         </div>

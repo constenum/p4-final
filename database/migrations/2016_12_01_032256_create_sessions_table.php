@@ -17,6 +17,7 @@ class CreateSessionsTable extends Migration
             $table->increments('id');
             $table->boolean('session_ended')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
