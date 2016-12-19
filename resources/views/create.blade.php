@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Tutoring Session</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="/sessions">
+                    <form class="form-horizontal" role="form" method="POST" action="/home">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('student_number') ? ' has-error' : '' }}">
