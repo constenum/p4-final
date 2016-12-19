@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="text-center table-name">Open Tutoring Sessions</h1>
 
-    <a class="button btn btn-default" href="/sessions/create">
+    <a class="button btn btn-default" href="/home/create">
         <i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Tutoring Session</a>
 
     @if(sizeof($sessions) == 0)
