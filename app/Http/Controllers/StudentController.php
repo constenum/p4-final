@@ -36,7 +36,25 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        # Validate
+        $this->validate($request, [
+            'student_number' => 'required|unique:students,student_number|integer|between:2017001,2023999',
+            'first_name' => 'required|alpha',
+            'last_name' => 'required|alpha',
+            'card_number' => 'required|unique:students,card_number|integer|between:1617001,1617999',
+        ]);
+
+        # Insert New Student Record
+        $student = new Student();
+        $student->student_number = $request->input('student_number');
+        $student->first_name = $request->input('first_name');
+        $student->last_name = $request->input('last_name');
+        $student->card_number = $request->input('card_number');
+        $student->save();
+
+        \Session::flash('flash_message', 'The student record has been created successfully!');
+
+        return redirect('/students');
     }
 
     /**
